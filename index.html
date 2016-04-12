@@ -1,0 +1,78 @@
+<html ng-controller="mainController">
+<head>
+	<title>Clube dos Geeks</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body >
+	<!-- Menu -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/">
+					Clube dos Geeks
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li ng-repeat="menu in menus">
+						<a href="#" ng-click="addTab(menu)">{{menu.name}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Onde será carregada a view -->
+	<div class="container">
+		<div>
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" ng-repeat="tab in tabs" ng-class="{active: tab.active}"><a href="#" ng-click="tab.active = true">{{tab.name}}</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" ng-repeat="tab in tabs" class="tab-pane" ng-class="{active: tab.active}" id="home" ng-include="tab.view">
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Rodapé -->
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="//clubedosgeeks.com.br">Clube dos Geeks</a>
+				</li>
+				<li>
+					<a href="//jayralencar.com.br">Jayr Alencar</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!-- jQuery -->
+	<script>window.$ = window.jQuery = require('jquery');</script>
+
+	<!-- Bootstrap -->
+	<script src="bootstrap/js/bootstrap.js"></script>
+
+	<!-- Angular -->
+	<script src="node_modules/angular/angular.js"></script>
+	<!-- Angular - Pagination -->
+	<script src="node_modules/angular-utils-pagination/dirPagination.js"></script>
+
+	<!-- App -->
+	<script src="app/app.js"></script>
+
+	<!-- Controllers -->
+	<script src="app/controllers/homeController.js"></script>
+	<script src="app/controllers/mainController.js"></script>
+	<script src="app/controllers/personController.js"></script>
+	<script src="app/controllers/productController.js"></script>
+
+	<!-- Angular Bootstrap -->
+	<script src="app/angular.bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<div ng-controller="personController">
+	<br>
+	<div class="row">
+		<div class="col-md-8">
+			<button class="btn btn-primary" data-toggle="modal" data-target="#modalPerson"><span class="glyphicon glyphicon-plus"></span> New</button>
+		</div>
+		<div class="col-md-4">
+			<input class="form-control" placeholder="Search" ng-model="search">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>E-mail</th>
+						<th>Phone</th>
+						<th>Country</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody ng-init="getPersons()">
+					<tr dir-paginate="person in persons | filter:search | itemsPerPage: 10">
+						<td>{{person.id}}</td>
+						<td>{{person.name}}</td>
+						<td>{{person.email}}</td>
+						<td>{{person.phone}}</td>
+						<td>{{person.country}}</td>
+						<td>
+							<button class="btn btn-info btn-xs" ng-click="edit(person)"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+							<button class="btn btn-danger btn-xs" ng-click="delete(person)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Modal Cadastro e Edição -->
+	<div class="modal fade" id="modalPerson" tabindex="-1" role="dialog" >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="myModalLabel">Person</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6">
+							<label>Name</label>
+							<input class="form-control" type="text" ng-model="person.name">
+						</div>
+						<div class="col-md-6">
+							<label>E-mail</label>
+							<input class="form-control" type="text" ng-model="person.email">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label>Phone</label>
+							<input class="form-control" type="text" ng-model="person.phone">
+						</div>
+						<div class="col-md-6">
+							<label>Country</label>
+							<input class="form-control" type="text" ng-model="person.country">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="person = {}" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
