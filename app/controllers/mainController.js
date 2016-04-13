@@ -23,12 +23,20 @@ app.controller("mainController", function($scope){
 	];
 
 	$scope.addTab = function(options){
-		if(options.active){
+		if($scope.tabs.indexOf(options) < 0){
+			if(options.active){
+				for(i in $scope.tabs){
+					$scope.tabs[i].active = false;
+				}
+			}
+			$scope.tabs.push(options);	
+		}else{
 			for(i in $scope.tabs){
 				$scope.tabs[i].active = false;
 			}
+			$scope.tabs[$scope.tabs.indexOf(options)].active = true;
 		}
-		$scope.tabs.push(options);
+		
 	}
 
 	$scope.activeMe = function(data){
