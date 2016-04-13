@@ -27,7 +27,7 @@
 
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" ng-repeat="tab in tabs" ng-class="{active: tab.active}"><a href="#" ng-click="tab.active = true">{{tab.name}}</a></li>
+				<li role="presentation" ng-repeat="tab in tabs" ng-class="{active: tab.active}"><a href="#" ng-click="activeMe(tab)">{{tab.name}}<button  ng-click="close(tab)" class="close">x</button></a></li>
 			</ul>
 
 			<!-- Tab panes -->
@@ -52,6 +52,14 @@
 			</ul>
 		</div>
 	</nav>
+	<style type="text/css">
+	.nav-tabs > li .close {
+	    margin: -2px 0 0 10px;
+    	font-size: 18px;
+	}
+
+
+	</style>
 	<!-- jQuery -->
 	<script>window.$ = window.jQuery = require('jquery');</script>
 

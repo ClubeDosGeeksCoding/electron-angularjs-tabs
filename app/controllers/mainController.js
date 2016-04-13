@@ -30,4 +30,18 @@ app.controller("mainController", function($scope){
 		}
 		$scope.tabs.push(options);
 	}
+
+	$scope.activeMe = function(data){
+		for(i in $scope.tabs){
+			$scope.tabs[i].active = false;
+		}
+		data.active = true;
+	}
+
+	$scope.close = function(data){
+		$scope.tabs.splice( $scope.tabs.indexOf(data), 1 );
+		if(data.active && $scope.tabs.length>0){
+			$scope.tabs[0].active = true;
+		}
+	}
 });
